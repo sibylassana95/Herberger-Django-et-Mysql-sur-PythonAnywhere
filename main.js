@@ -82,7 +82,7 @@ function createBonusCard(command) {
         <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200" data-aos="fade-up">
             <h4 class="text-xl font-semibold text-gray-600 dark:text-gray-300 mb-2">${command.title}</h4>
             <p class="text-gray-600 dark:text-gray-300 mb-4">${command.description}</p>
-            <pre class="code-block"><code class="language-${command.language}">${command.code}</code></pre>
+            <pre class="code-block text-gray-600 dark:text-gray-300"><code class="language-${command.language}">${command.code}</code></pre>
         </div>
     `;
 }
