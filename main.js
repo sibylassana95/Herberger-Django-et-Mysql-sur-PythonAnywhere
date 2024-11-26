@@ -7,13 +7,13 @@ const steps = [
     },
     {
         title: "Environnement Virtuel",
-        content: "Créez et activez un environnement virtuel Python 3.10:",
+        content: "Créez et activez un environnement virtuel Python 3.10, Remplacez testenv par le nom de votre choix:",
         code: "mkvirtualenv --python=/usr/bin/python3.10 testenv\nworkon testenv",
         language: "bash"
     },
     {
         title: "Installation des Dépendances",
-        content: "Installez les packages nécessaires depuis requirements.txt, Remplacez testenv par le nom de votre choix",
+        content: "Installez les packages nécessaires depuis requirements.txt.",
         code: "pip install -r requirements.txt",
         language: "bash"
     },
