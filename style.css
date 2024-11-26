@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.step-card {
+    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-lg p-8 transition-all duration-200;
+}
+
+.step-card:hover {
+    @apply transform -translate-y-1 shadow-xl;
+}
+
+.code-block {
+    @apply bg-gray-100 dark:bg-gray-700 rounded-lg font-mono text-sm my-4 overflow-x-auto;
+    position: relative;
+}
+
+.code-block code {
+    @apply block p-4;
+}
+
+/* Personnalisation de la barre de défilement */
+::-webkit-scrollbar {
+    @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Animation de gradient en arrière-plan */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
