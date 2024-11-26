@@ -1,44 +1,121 @@
+/* Tailwind CSS et styles personnalisés */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.step-card {
-    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-lg p-8 transition-all duration-200;
+:root {
+    /* Palette de couleurs lumière */
+    --background-light: #f4f5f7;
+    --text-primary-light: #2d3748;
+    --text-secondary-light: #4a5568;
+    --card-background-light: #ffffff;
+    --primary-color-light: #3182ce;
+    --hover-color-light: #2c5282;
 }
 
-.step-card:hover {
-    @apply transform -translate-y-1 shadow-xl;
+.dark {
+    /* Palette de couleurs sombre */
+    --background-dark: #121212;
+    --text-primary-dark: #e2e8f0;
+    --text-secondary-dark: #cbd5e0;
+    --card-background-dark: #1a202c;
+    --primary-color-dark: #4299e1;
+    --hover-color-dark: #63b3ed;
 }
 
+body {
+    @apply transition-colors duration-300 ease-in-out;
+    background-color: var(--background-light);
+    color: var(--text-primary-light);
+    font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.dark body {
+    background-color: var(--background-dark);
+    color: var(--text-primary-dark);
+}
+
+.container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Styles de carte */
+.step-card, .bonus-card {
+    @apply bg-white dark:bg-gray-800 
+           rounded-xl shadow-md hover:shadow-lg 
+           transition-all duration-300 
+           border border-gray-200 dark:border-gray-700 
+           p-6 mb-6;
+}
+
+.step-card .step-number {
+    @apply w-10 h-10 rounded-full 
+           bg-blue-100 dark:bg-blue-900 
+           text-blue-600 dark:text-blue-300 
+           flex items-center justify-center 
+           font-bold;
+}
+
+/* Code blocks */
 .code-block {
-    @apply bg-gray-100 dark:bg-gray-700 rounded-lg font-mono text-sm my-4 overflow-x-auto;
-    position: relative;
+    @apply bg-gray-100 dark:bg-gray-900 
+           rounded-lg p-4 
+           overflow-x-auto 
+           border border-gray-200 dark:border-gray-700 
+           text-sm font-mono;
 }
 
-.code-block code {
-    @apply block p-4;
+/* Boutons */
+.btn-primary {
+    @apply px-4 py-2 
+           bg-blue-600 dark:bg-blue-500 
+           text-white 
+           rounded-lg 
+           hover:bg-blue-700 dark:hover:bg-blue-600 
+           transition duration-300;
 }
 
-/* Personnalisation de la barre de défilement */
-::-webkit-scrollbar {
-    @apply w-2 h-2;
+/* Titres */
+h1, h2, h3 {
+    @apply text-gray-900 dark:text-white 
+           font-bold 
+           mb-4;
 }
 
-::-webkit-scrollbar-track {
-    @apply bg-gray-100 dark:bg-gray-700 rounded-full;
+/* Thème toggle */
+#themeToggle {
+    @apply p-2 rounded-full 
+           bg-gray-200 dark:bg-gray-700 
+           text-gray-700 dark:text-gray-200 
+           hover:bg-gray-300 dark:hover:bg-gray-600 
+           transition duration-300;
 }
 
-::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+/* Responsive Design */
+@media (max-width: 640px) {
+    .container {
+        @apply px-2;
+    }
+    
+    .step-card, .bonus-card {
+        @apply p-4;
+    }
 }
 
-::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-400 dark:bg-gray-500;
+/* Animation subtile */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Animation de gradient en arrière-plan */
-@keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
 }
