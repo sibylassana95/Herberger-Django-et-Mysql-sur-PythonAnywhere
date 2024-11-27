@@ -38,7 +38,7 @@ const steps = [
     {
         title: "Déploiement",
         content: "Exécutez les commandes de déploiement:",
-        code: "python manage.py makemigrations\npython manage.py migrate\npython manage.py collectstatic\npython manage.py createsuperuser",
+        code: "python manage.py makemigrations\npython manage.py migrate\npython manage.py collectstatic",
         language: "bash"
     }
 ];
