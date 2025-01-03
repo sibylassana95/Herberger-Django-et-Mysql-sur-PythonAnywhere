@@ -1,3 +1,6 @@
+# Déployer un projet Django avec MySQL sur PythonAnywhere
+
+Un guide complet pour déployer votre application Django avec MySQL sur PythonAnywhere, étape par étape.
 ## Installation
 
 1. Clonez le projet :
