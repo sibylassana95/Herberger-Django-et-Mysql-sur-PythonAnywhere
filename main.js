@@ -19,13 +19,13 @@ const steps = [
     },
     {
         title: "Configuration Web",
-        content : "Dans l'interface de PythonAnywhere, accédez à l'onglet Web, créez une nouvelle application Web avec une configuration manuelle (assurez-vous de ne pas choisir l'option 'Django'), puis configurez les chemins comme suit :",
-        code: "# Source code: /home/username/project\n# Working directory: /home/username/\n# Virtual env: /home/username/.virtualenvs/testenv\n\n# Configuration WSGI:\nimport os\nimport sys\n\nproject_home = '/home/username/project'\nif project_home not in sys.path:\n    sys.path.insert(0, project_home)\nos.environ['DJANGO_SETTINGS_MODULE'] = 'project.settings'\n\nfrom django.core.wsgi import get_wsgi_application\napplication = get_wsgi_application()",
+        content: "Dans l'interface de PythonAnywhere, accédez à l'onglet Web, créez une nouvelle application Web avec une configuration manuelle (assurez-vous de ne pas choisir l'option 'Django'), puis configurez les chemins comme suit :",
+        code: "# Source code: /home/username/project\n# Working directory: /home/username/\n# Virtual env: /home/username/.virtualenvs/testenv\n\n# Configuration WSGI:\nimport os\nimport sys\nfrom dotenv import load_dotenv\n\nproject_home = '/home/username/project'\n# Charger les variables d'environnement depuis .env\nload_dotenv(os.path.join(project_home, '.env'))\n\nos.environ['DJANGO_SETTINGS_MODULE'] = 'project.settings'\n\nfrom django.core.wsgi import get_wsgi_application\napplication = get_wsgi_application()",
         language: "python"
     },
     {
         title: "Base de Données MySQL",
-        content : "La prochaine étape consiste à configurer votre base de données MySQL sur PythonAnywhere. Cliquez sur l'onglet 'Databases' et suivez les instructions pour créer une nouvelle base de données MySQL. Assurez-vous de noter les informations de connexion à la base de données (nom d'utilisateur, mot de passe, nom de la base de données, etc.). Maintenant, vous devez configurer votre projet Django pour qu'il utilise la base de données MySQL sur PythonAnywhere. Modifiez votre fichier **settings.py** pour qu'il utilise les informations de connexion à la base de données MySQL. Assurez-vous de spécifier le bon nom d'utilisateur, mot de passe, nom de la base de données et hôte.",
+        content: "La prochaine étape consiste à configurer votre base de données MySQL sur PythonAnywhere. Cliquez sur l'onglet 'Databases' et suivez les instructions pour créer une nouvelle base de données MySQL. Assurez-vous de noter les informations de connexion à la base de données (nom d'utilisateur, mot de passe, nom de la base de données, etc.). Maintenant, vous devez configurer votre projet Django pour qu'il utilise la base de données MySQL sur PythonAnywhere. Modifiez votre fichier **settings.py** pour qu'il utilise les informations de connexion à la base de données MySQL. Assurez-vous de spécifier le bon nom d'utilisateur, mot de passe, nom de la base de données et hôte.",
         code: "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.mysql',\n        'NAME': 'your_db_name',\n        'USER': 'your_username',\n        'PASSWORD': 'your_password',\n        'HOST': 'your_host',\n        'PORT': '3306',\n    }\n}",
         language: "python"
     },
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Gestionnaire du thème sombre/clair
     const themeToggle = document.getElementById('themeToggle');
-    
+
     function updateTheme() {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
